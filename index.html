@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Login page</title>
+<style>
+#wrapper
+{ 
+    width:400px;
+    height:250px;
+    margin:auto;
+	margin-top:50px;
+	margin-left:400px;
+    border-style:solid ;
+    border-radius: 10px;
+    border-width:3px;
+    border-color: gray;
+    background-color:grey;
+    padding-top:15px;
+}
+#inner1
+{ 
+    width:400px;
+	margin-top:27px;
+	background-color: whitesmoke;
+    height:205px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;  
+}
+label{
+    margin-top: 100px;
+    margin-left: 70px;
+    font-family:sans-serif;
+}
+input{
+    margin-top: 30px;
+    width:200px;
+    height:30px;
+}
+#submit{
+    width: 80px;
+    height: 30px;
+    border-radius:10px;
+    margin-left: 120px;  
+    margin-bottom: 300px;
+    font-family:sans-serif;   
+}
+#user{
+    padding-top:30px;
+    margin-top:30px;
+    font-family:sans-serif; 
+}
+#anchor{
+    margin-left: 20px;
+}
+</style>
+</head>
+<body>
+    <section class="container">
+        <div id="wrapper">
+            <center><span id="user">User Login</span></center>
+            <div id = "inner1">
+                <form action="q1.html" method="post" width=120%>
+                    <label>Username:</label>
+                    <input id="username" name="username" type="text" />
+                    <label>Password: </label>
+                    <input id="pass" name="password" type="password"/><br>
+                    <a id="anchor" href="forgot.html">Create Account/Forgot?</a>
+                    <input id ="submit" type = "submit" value="Login" >
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

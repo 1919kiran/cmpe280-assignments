@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Question 3</title>
+<script type="text/javascript" src="util.js"></script>
+<script>
+console.log("window.location.search: " + window.location.search);
+	function display1(attrib) {
+		var selected = attrib.getAttribute("data-value");
+		document.getElementById("p1").innerHTML = selected;
+		if(selected == '650')
+			{
+				document.cookie = "3";
+			}
+		
+	}
+	function display2(attrib) {
+
+		document.getElementById("p2").innerHTML = attrib.getAttribute("data-value");
+	}
+	function submitPage() {
+      var rA = getQS('rA');
+      var rC = getQS('rC');
+
+      var answer1 = document.querySelector('input[name="option"]:checked');
+      var answer2 = document.querySelector('input[name="option2"]:checked');
+      if(answer1 || answer2) {
+      	rA += 1;
+      	var selected = answer1 ? document.querySelector('input[name="option"]:checked').getAttribute("data-value") : false;
+      	var selected2 = answer2 ? document.querySelector('input[name="option2"]:checked').getAttribute("data-value") : false;
+        
+        if ((selected && selected == '650') && (selected2 && selected2 =='Google')) {
+            rC += 1;
+        }
+      }
+      var nextPage = window.location.search;
+      nextPage = setQS(nextPage, 'rA', rA);
+      nextPage = setQS(nextPage, 'rC', rC);
+      document.forms[0].action = document.forms[0].action + nextPage;
+      console.log("Action: " + document.forms[0].action);
+      console.log("window.location.search: " + window.location.search);
+  }
+</script>
+</head>
+<body>
+<form id="myForm" action="q4.html" method="POST">
+	<table frame="box" align="center" style="border-radius: 8px">
+
+		<tr>
+			<th bgcolor="#d3d3d3" style="border-radius: 8px" colspan=2>
+				Question 3</th>
+		</tr>
+		<tr>
+			<td>As per the latest twitter news. complete the article snippet
+				given by<br> selecting appropriate choices for the blanks.<br>
+			<br>
+			<br> <input type="radio" name="option" onclick=display1(this)
+				data-value="650"> Option 1 Mark 1: $650
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="option2"
+				onclick=display2(this) data-value="Twitter"> Option 1 Mark
+				2: Twitter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+			<br> <input type="radio" name="option" onclick=display1(this)
+				data-value="550"> Option 2 Mark 1: $550
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="option2"
+				onclick=display2(this) data-value="Google"> Option 1 Mark 2:
+				Google &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+			<br> <input type="radio" name="option" onclick=display1(this)
+				data-value="650"> Option 3 Mark 1: $650
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="option2"
+				onclick=display2(this) data-value="Facebook"> Option 1 Mark
+				2: Facebook &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+			<br> <input type="submit" name="submit"
+				value="Submit & Next Question"
+				style="background: transparent; border-radius: 5px; border: 1px solid" 
+				onclick="submitPage();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="reset" name="reset" value="Cancel & Clear Solution"
+				style="background: transparent; border-radius: 5px; border: 1px solid">
+			</td>
+			<td>Twitter wants more cash. The company announced two<br>
+				<mark>
+					$<label id="p1">______</label>
+				</mark> million debt offerings in a filing today. each with a<br>
+				potential $100 increase provided that the sales are<br>
+				oversubscribed. Assuming full tip. including the $100 million <br>boosters
+				<mark>
+					<label id="p2">_____________</label>
+				</mark> will raise up to $1.5 billion with the two<br> offerings.<br>
+				<footer>
+					<p>
+						Source: httplitechcrunch.com/2014/09/104witter-to-raise-up-<br>to-1
+						-5b-in-debt-offering
+					</p>
+				</footer>
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

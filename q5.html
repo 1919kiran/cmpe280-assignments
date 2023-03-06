@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Survey</title>
+<script type="text/javascript" src="util.js"></script>
+<script type="text/javascript">
+console.log("window.location.search: " + window.location.search);
+	function showDetails(attrib) {
+		var city = attrib;
+	}
+	function submitPage() {
+      var nextPage = window.location.search;
+      document.forms[0].action = document.forms[0].action + nextPage;
+  	}
+</script>
+</head>
+<body>
+	<form action="summary.html" method="POST">
+	<table frame="box" align="center" style="border-radius: 8px">
+
+		<tr>
+			<th bgcolor="#d3d3d3" style="border-radius: 8px">Survey</th>
+		</tr>
+		<tr>
+			<td>How did u like the center?<br>
+			<br>
+			<br> Comments:<br> <textarea size="50"
+					style="height: 100px;"></textarea><br> Select Text Area
+				Location:<br>
+				City:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RoomNumber:<br>
+
+				<select size="4" onchange="showDetails(this.value)">
+					<option id="SanJose" value="San Jose">San Jose</option>
+					<option id="SanFrancisco" value="San Francisco">San
+						Francisco</option>
+					<option id="PaloAlto" value="Palo Alto">Palo Alto</option>
+					<option id="MountainView" value="Mountain View">Mountain
+						View</option>
+					<option id="Sunnyvale" value="Sunnyvale">Sunnyvale</option>
+					<option id="Milpitas" value="Milpitas">Milpitas</option>
+				</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<select size="4">
+					<option value="Room 337">Room 337</option>
+					<option value="Room 210">Room 210</option>
+					<option value="Room 110">Room 110</option>
+					<option value="Room 410">Room 410</option>
+					<option value="Room 301">Room 301</option>
+					<option value="Room 189">Room 189</option>
+			</select> <br>
+			<br> <input type="submit" name="submit"
+				value="Submit & Next Question"
+				style="background: transparent; border-radius: 5px; border: 1px solid"  onclick="submitPage();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="reset" name="reset" value="Cancel & Clear Solution"
+				style="background: transparent; border-radius: 5px; border: 1px solid">
+			</td>
+		</tr>
+	</table>
+	</form>
+</body>
+</html>

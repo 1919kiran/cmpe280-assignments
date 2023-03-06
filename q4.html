@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<script type="text/javascript" src="util.js"></script>
+<script type="text/javascript">
+    console.log("window.location.search: " + window.location.search);
+
+    function submitPage() {
+        var vA = getQS('vA');
+        var vC = getQS('vC');
+        var selected = document.querySelector('input[name="option"]:checked').getAttribute("data-value");
+        if (selected) {
+            vA += 1;
+            if (selected == 'NASA') {
+                vC += 1;
+            }
+        }
+        var nextPage = window.location.search;
+        nextPage = setQS(nextPage, 'vA', vA);
+        nextPage = setQS(nextPage, 'vC', vC);
+        document.forms[0].action = document.forms[0].action + nextPage;
+        console.log("Action: " + document.forms[0].action);
+        console.log("window.location.search: " + window.location.search);
+    }
+</script>
+</head>
+<body>
+	<form action="q5.html" method="POST">
+	<table frame="box" align="center" style="border-radius: 8px">
+		<tr>
+			<th bgcolor="#d3d3d3" style="border-radius: 8px" colspan="3">
+				Question 4</th>
+		</tr>
+		<tr>
+			<td colspan="2">Watch the video and answer the following
+				question.<br>What is the source as mentioned in the video?<br>
+				<br>
+			</td>
+			<td rowspan="3"><iframe width="420" height="315"
+					src="http://www.youtube.com/embed/ih9jPaZct1w"></iframe></td>
+		</tr>
+		<tr>
+			<td><input type="radio" name="option" data-value="NASA" />NASA.Gov</td>
+			<td><input type="radio" name="option" data-value="DATA" />Data.Gov</td>
+		</tr>
+		<tr>
+			<td><input type="radio" name="option" data-value="FACEBOOK" />Facebook</td>
+			<td><input type="radio" name="option" data-value="XYZ" />XYZ.net</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" name="submit"
+				value="Submit & Next Question"
+				style="background: transparent; border-radius: 5px; border: 1px solid"  onclick="submitPage();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="reset" name="reset" value="Cancel & Clear Solution"
+				style="background: transparent; border-radius: 5px; border: 1px solid">
+			</td>
+			<td>
+				<div
+					style="background: #d3d3d3; font-size: medium; font-weight: bold">Expedition
+					40 Undocks Ending Mission</div> <span style="font-size: small">Source:
+					http://www.nasa.gov/multimedia/videogallary/index.html#.VBFB5S5dVOE</span>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

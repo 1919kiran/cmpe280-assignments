@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Question1</title>
+<script type="text/javascript" src="util.js"></script>
+<script type="text/javascript">
+ console.log("window.location.search: " + window.location.search);
+	function showValue(answer) {
+		lastselected = answer;
+	}
+
+  function submitPage() {
+      var qA = getQS('qA');
+      var qC = getQS('qC');
+      var selected = document.querySelector('input[name="option"]:checked').getAttribute("data-value");
+      if(selected) {
+        qA += 1;
+        if (selected == 'equation4') {
+            qC += 1;
+        }
+      }
+      var nextPage = window.location.search;
+      nextPage = setQS(nextPage, 'qA', qA);
+      nextPage = setQS(nextPage, 'qC', qC);
+      document.forms[0].action = document.forms[0].action + nextPage;
+      console.log("Action: " + document.forms[0].action);
+  }
+</script>
+</head>
+<body>
+	<form id="myForm" action="q2.html" method="POST">
+		<table frame="box" align="center" style="border-radius: 8px">
+			<tr>
+				<th bgcolor="#d3d3d3" style="border-radius: 8px;" colspan=2>
+					Question 1</th>
+			</tr>
+			<tr>
+				<td>Given points (x1,y1) and (x2,y2) select the formula to find
+					the equation<br> of given line<br>
+				<br>
+				<br> <input type="radio" name="option"
+					onClick="showValue(this)" data-value="equation1"> <math>
+ <mrow>
+  <mi>y </mi>
+  <mo> = </mo>
+  <mrow>
+    <mi>m </mi>
+    <mi>x </mi>
+  </mrow>
+  <mo>+ </mo>
+  <mn>c</mn>
+ </mrow>
+</math>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+<input type="radio" name="option"
+					onClick="showValue(this)" data-value="equation2"> 
+					<math>
+          <msup>
+            <mrow>
+              <mo>(</mo>
+              <mrow>
+                <mrow>
+                  <mi>x</mi>
+                </mrow>
+                <mo>-</mo>
+                <mrow>
+                  <mi>h</mi>
+                </mrow>
+              </mrow>
+              <mo>)</mo>
+            </mrow>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+          <msup>
+            <mrow>
+              <mo>(</mo>
+              <mrow>
+                <mrow>
+                  <mi>y</mi>
+                </mrow>
+                <mo>-</mo>
+                <mrow>
+                  <mi>k</mi>
+                </mrow>
+              </mrow>
+              <mo>)</mo>
+            </mrow>
+            <mn>2</mn>
+          </msup>
+          <mo>=</mo>
+          <msup>
+            <mi>r</mi>
+            <mn>2</mn>
+          </msup>
+        </math><br>
+				<br> <input type="radio" name="option"
+					onClick="showValue(this)" data-value="equation3"> <math
+						xmlns="http://www.w3.org/1998/Math/MathML">
+       <mrow>
+  <mi>y </mi>
+  <mo> - </mo>
+  <msub>
+  	<mi>y </mi>
+  	<mn>1 </mn>
+  </msub>
+  	<mo>=</mo>
+  	<mrow>
+    <mi>m </mi>
+    <mo>(</mo>
+    <mi>x </mi>
+    <mo>-</mo>
+    <msub>
+  	<mi>x </mi>
+  	<mn>1 </mn>
+  </msub>
+  <mo>)</mo>
+  </mrow>
+   </mrow>
+   </math> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio"
+					name="option" onClick="showValue(this)" data-value="equation4">
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mrow>
+  <mi>y </mi>
+  <mo> - </mo>
+  <msub>
+  	<mi>y </mi>
+  	<mn>1 </mn>
+  </msub>
+  	<mo>=</mo>
+  	<mfrac>
+    <mrow>
+     <msub> <mi>x</mi>
+						<mn>2</mn></msub>
+      <mo>-</mo>
+     <msub> <mi>x</mi>
+						<mn>1</mn></msub>
+    </mrow>
+  	
+    <mrow>
+     <msub> <mi>x</mi>
+						<mn>2</mn></msub>
+      <mo>-</mo>
+     <msub> <mi>x</mi>
+						<mn>1</mn></msub>
+    </mrow>
+  </mfrac>
+  </mrow>
+   </math><br>
+				<br> 
+        <input type="submit" name="submit"
+					value="Submit & Next Question"
+					style="background: transparent; border-radius: 5px; border: 1px solid"
+          onclick="submitPage();">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="reset" name="reset" value="Cancel & Clear Solution"
+					style="background: transparent; border-radius: 5px; border: 1px solid">
+				</td>
+				<td><img src="graph.JPG"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

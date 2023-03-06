@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Summary</title>
+	<script type="text/javascript" src="util.js"></script>
+	<script type="text/javascript" >
+	console.log("window.location.search: " + window.location.search);
+	function showScores() {
+		var qA = getQS('qA');
+		var qC = getQS('qC');
+		document.getElementById('quan_q').innerHTML = qA;
+		document.getElementById('quan_a').innerHTML = qC;
+		document.getElementById('quan_score').innerHTML = (qC/qA)*100;
+
+		var rA = getQS('rA');
+		var rC = getQS('rC');
+		document.getElementById('read_q').innerHTML = rA;
+		document.getElementById('read_a').innerHTML = rC;
+		document.getElementById('read_score').innerHTML = (rC/rA)*100;
+
+		var vA = getQS('vA');
+		var vC = getQS('vC');
+		document.getElementById('av_q').innerHTML = vA;
+		document.getElementById('av_a').innerHTML = vC;
+		document.getElementById('av_score').innerHTML = (vC/vA)*100;
+	}
+	</script>
+</head>
+<body onload="showScores();">
+
+<table frame="box" align="center" style="border-radius: 8px;border" width="65%">
+<tr>
+	<th bgcolor="#d3d3d3" style="border-radius: 8px">Score Card</th>
+</tr>
+<tr>
+	<td>
+	<table frame="box" align="center" width="100%">
+		<tr>
+			<td>
+				<details>  
+				  <summary>Quantitave Section</summary>  
+				      <p><strong>Number of Questions Answered:</strong><label id = "l1"></label><span id="quan_q"></span></p>
+				      <p><strong>Number of Correct Answers:</strong><span id="quan_a"></span></p>
+				      <p><strong>Score:</strong><span id="quan_score"></span></p>
+				</details>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<details>  
+				  <summary>Reading Section</summary>  
+						<p><strong>Number of Questions Answered:</strong><span id="read_q"></span></p>
+						<p><strong>Number of Correct Answers:</strong><span id="read_a"></span></p>
+						<p><strong>Score:</strong><span id="read_score"></span></p>
+				</details>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<details>  
+				  <summary>Audio/Video Section</summary>  
+						<p><strong>Number of Questions Answered:</strong><span id="av_q"></span></p>
+						<p><strong>Number of Correct Answers:</strong><span id="av_a"></span></p>
+						<p><strong>Score:</strong><span id="av_score"></span></p>
+				</details>
+			</td>
+		</tr>
+	</table>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		<h2>Thank You!!</h2>
+	</td>
+</tr>
+<tr>
+	<td align="center">
+		<input type="submit" name="finish" onclick="location.href='index.html'" value="Finish" style="background: transparent; border-radius:5px; border:1px solid; width: 10em; height: 2em">
+	</td>
+</tr>
+</table>
+</body>
+</html>
