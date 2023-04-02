@@ -1,0 +1,304 @@
+html, body{
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif !important;
+  transition: all .1s ease;
+}
+
+video{
+  border: 1px solid black;
+}
+
+h1{
+  color: #fff;
+}
+
+.img-table{
+  width: 60px;
+  height: 60px;
+}
+
+.img-cell{
+  text-align: center;
+}
+
+#vid-div{
+  text-align: center;
+  display: none;
+}
+
+#canvas{
+  background-color: #fff;
+  width: 200;
+  height: 150;
+}
+
+#photo{
+  width: 200;
+  height: 150;
+}
+
+#home{
+  background-image: url("../img/med.jpg");
+  /* display: table; */
+  height: 100%;
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+#demo-header{
+  background-image: url("../img/demo.jpg");
+  /* display: table; */
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 200px;
+  text-align: center;
+}
+
+#vitals-header{
+  background-image: url("../img/vitals.png");
+  /* display: table; */
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 200px;
+  text-align: center;
+}
+
+#reports-header{
+  background-image: url("../img/stat.jpg");
+  /* display: table; */
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 200px;
+  text-align: center;
+}
+
+#demo{
+  background-color: #fff;
+  padding-top: 150px;
+}
+
+#row-one{
+  border: 1px solid #c2c2c2;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+#row-two{
+  border: 1px solid #c2c2c2;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+#row-three{
+  border: 1px solid #c2c2c2;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 0 50px;
+}
+
+#attr{
+  padding: 50px;
+  background-color: #222;
+  color: #fff;
+}
+
+#home h1{
+  color: #fff;
+  font-size: 4em;
+  letter-spacing: 20px;
+}
+
+#demo-header h1{
+  color: #fff;
+  font-size: 4em;
+  font-weight: bolder;
+  letter-spacing: 20px;
+}
+
+#vitals-header h1{
+  font-size: 3.5em;
+  font-weight: bolder;
+  letter-spacing: 20px;
+  color: #fff;
+}
+
+#reports-header h1{
+  font-size: 3.5em;
+  font-weight: bolder;
+  letter-spacing: 20px;
+  color: #fff;
+}
+
+.numbers{
+  font-size: 2em;
+}
+
+.hosp-msg{
+  padding: 70px;
+}
+
+#vitals{
+  background-color: #fff;
+  padding-top: 150px;
+}
+
+#reports{
+  background-color: #fff;
+  padding-top: 150px;
+}
+
+#footer{
+  background-color: #000;
+  color: #fff;
+  padding: 70px 0 150px 0;
+}
+
+#to-top{
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2em;
+}
+
+#to-top:hover{
+  color: #cca800;
+}
+
+#logo-name{
+  text-decoration: none;
+  color: #fff;
+}
+
+#logo-name:hover{
+  color: #cca800
+}
+
+#home-msg{
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+#scroll{
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+#scroll:hover, i:hover, #to-top:hover{
+  color: #cca800;
+  transition: all .5s ease;
+}
+
+.hello{
+  border: 1px solid black;
+}
+
+.text-center h1{
+  font-size: 5em;
+  font-weight: 700;
+}
+
+#form1{
+  border-left: 1px solid #c2c2c2;
+}
+
+#form2{
+  border-right: 1px solid #c2c2c2;
+}
+
+.pic{
+  border: 1px solid red;
+}
+
+.add-on{
+  padding: 50px 0;
+  height: 100%;
+}
+
+.navigation{
+  background-color: #000 !important ;
+  border: none !important;
+}
+
+form{
+  padding: 40px 0 40px 40px;
+}
+
+textarea{
+  resize: none;
+  width: 100%;
+}
+
+p{
+  line-height: 2;
+  font-size: 1.1em;
+}
+
+th{
+  background-color: #222;
+  color: #fff;
+  text-align: center !important;
+}
+
+i {
+  display: block;
+  color: #fff;
+}
+
+ul li>a,.navbar-brand{
+  color: #fff;
+}
+
+ul li>a:hover,.navbar-brand:hover{
+  color: #cca800;
+  background-color: #000 !important;
+  transition: all 0.5s ease;
+}
+
+hr{
+  width: 20%;
+}
+
+#copyright{
+  color: #cca800;
+}
+
+#copyright:hover{
+  color: #fff;
+}
+
+#link-msg{
+  font-size: 0.9em;
+}
+
+.active{
+  color: #cca800;
+  transition: all .3s ease;
+}
