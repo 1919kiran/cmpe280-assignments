@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Tech Tribe</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="index.css">
+
+
+
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+
+    <header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow" style="background-color: #443a28">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Food Security & Data Sensors</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3">Connected</a> -->
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3">Crops</a>
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3"></a>
+        
+        <div>
+        </div>
+
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" id="timeseries" href="index.html" style="font-size: large;">
+                                <span data-feather="file-text"></span>
+                                Time Series Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="crops" href="#" style="font-size: large;">
+                                <!-- <span data-feather="file-text"></span> -->
+                                Crops
+                            </a>
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li style="margin-left: 15%; "><a href="#" onclick="hide('ban')" class="link-dark rounded">Bananas</a></li>
+                                    <li style="margin-left: 15%; "><a href="#" onclick="hide('man')" class="link-dark rounded">Mangoes</a></li>
+                                    <li style="margin-left: 15%; "><a href="#" onclick="hide('wal')" class="link-dark rounded" >Walnuts</a></li>
+                                </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="import-export" href="importexport.html" style="font-size: large;">
+                                <span data-feather="file-text"></span>
+                                Imports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="sensors" href="sensors.html" style="font-size: large;">
+                              <span data-feather="file-text"></span>
+                              Sensors
+                          </a>
+                      </li>
+                    </ul>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div id="ban" >
+               <h2 style="margin-top: 2%; text-align: center;">Bananas</h2>
+                <div  id="mapb" style="float: left;"></div>
+
+                <div  id="mapb2"></div>
+                </div>
+
+            <div id = "man" >
+                <h2 style="margin-top: 2%; text-align: center;">Mangoes</h2>
+                <div  id="mapm1"></div>
+
+                <div  id="mapm2"></div>
+    </div>
+
+    <div id="wal" >
+                <h2 style="margin-top: 2%; text-align: center;">Walnuts</h2>
+                <div  id="mapw"></div>
+
+    </div>
+                
+            </main>
+
+        </div>
+    </div>
+
+    <script>
+        // Check if connected or local
+
+function hide(element){
+    var x = document.getElementById(element);
+    if (element == "ban"){
+        if (x.style.display === "none") {
+        x.style.display = "block";
+      } 
+      document.getElementById("man").style.display = "none";
+      document.getElementById("wal").style.display = "none";
+    }
+    else if(element == "man"){
+        if (x.style.display === "none") {
+        x.style.display = "block";
+      } 
+      document.getElementById("ban").style.display = "none";
+      document.getElementById("wal").style.display = "none";
+    }
+    else if(element == "wal"){
+
+        if (x.style.display === "none") {
+        x.style.display = "block";
+      } 
+      document.getElementById("man").style.display = "none";
+      document.getElementById("ban").style.display = "none";
+    }
+
+      
+}
+
+
+function pinSymbol(color) {
+    return {
+        path: 'M 0,0 C -2,-20 -10,-22 -10,-30 A 10,10 0 1,1 10,-30 C 10,-22 2,-20 0,0 z M -2,-30 a 2,2 0 1,1 4,0 2,2 0 1,1 -4,0',
+        fillColor: color,
+        fillOpacity: 1,
+        strokeColor: '#000',
+        strokeWeight: 2,
+        scale: 1,
+   };
+}
+function initMapb() {
+        
+        var uluru = [[{lat: 23.1317, lng: 113.2663}, 10000000],
+                     [{lat: 24.3255, lng: 109.4155}, 3000000],
+                     [{lat: 25.0453, lng: 102.7097}, 120000000],
+
+                     [{lat: 20.0200, lng: 110.3486}, 120000000],
+                    
+                    ];
+        var map = new google.maps.Map(document.getElementById('mapb'), {
+          zoom: 4,
+          center: uluru[2][0]
+        });
+        
+
+        for(var i=0;i<4;i++){
+          marker = new google.maps.Marker({
+            position: uluru[i][0],
+            animation: google.maps.Animation.DROP,
+            map: map
+          });
+          if (i<11){
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+          }
+          else if(i == 11){
+            marker.setIcon(pinSymbol("#FFF"));
+          }
+          else if(i == 12){
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+          }
+          else if(i == 13 || i == 14){
+
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+            marker.placeTitle('testing')
+          }
+        }
+
+        for (i=0;i<4;i++) {
+          var circle = new google.maps.Circle({
+            strokeColor: '#64967d',
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            fillColor: '#b0ecf4',
+            fillOpacity: 0.35,
+            map: map,
+            center: uluru[i][0],
+            radius: Math.sqrt(uluru[i][1]) * 80
+          });
+        }
+}
+
+
+function initMapb2() {
+        
+        var uluru = [[{lat: -5.450000, lng: 105.266670}, 10000000],
+                     [{lat: -7.250445, lng: 112.768845}, 3000000],
+                     [{lat: -6.914744, lng: 107.609810}, 120000000],
+
+                     
+                    
+                    ];
+        var map = new google.maps.Map(document.getElementById('mapb2'), {
+          zoom: 4,
+          center: uluru[2][0]
+        });
+        // const placeTitle = document.createElement('div');
+        // placeTitle.className = 'price-tag';
+        // placeTitle.textContent = '$2.5M';
+        // var marker = "";
+
+        for(var i=0;i<3;i++){
+          marker = new google.maps.Marker({
+            position: uluru[i][0],
+            animation: google.maps.Animation.DROP,
+            map: map
+          });
+          if (i<3){
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+          }
+        }
+
+        for (i=0;i<3;i++) {
+          var circle = new google.maps.Circle({
+            strokeColor: '#64967d',
+            strokeOpacity: 1,
+            strokeWeight: 0.68,
+            fillColor: '#b0ecf4',
+            fillOpacity: 0.7,
+            map: map,
+            center: uluru[i][0],
+            radius: Math.sqrt(uluru[i][1]) * 80
+          });
+        }
+      }
+
+
+function initMapm1() {
+        
+        var uluru = [[{lat: 16.5662, lng: 121.2626}, 10000000],
+                     [{lat: 11.0000, lng: 123.5000}, 3000000],
+                     [{lat: 8.4961, lng: 123.3034}, 120000000],
+                   
+                    ];
+        var map = new google.maps.Map(document.getElementById('mapm1'), {
+          zoom: 4,
+          center: uluru[2][0]
+        });
+        const placeTitle = document.createElement('div');
+        placeTitle.className = 'price-tag';
+        placeTitle.textContent = '$2.5M';
+        var marker = "";
+
+        for(var i=0;i<3;i++){
+          marker = new google.maps.Marker({
+            position: uluru[i][0],
+            animation: google.maps.Animation.DROP,
+            map: map
+          });
+          if (i<11){
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+          }
+        }
+
+        for (i=0;i<3;i++) {
+          var circle = new google.maps.Circle({
+            strokeColor: '#64967d',
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            fillColor: '#b0ecf4',
+            fillOpacity: 0.35,
+            map: map,
+            center: uluru[i][0],
+            radius: Math.sqrt(uluru[i][1]) * 50
+            // i=i+1;
+          });
+        }
+     
+      }
+
+function initMapm2() {
+        
+        var uluru = [[{lat: 17.6868, lng: 83.2185}, 10000000],
+                     [{lat: 13.6288, lng: 79.4192}, 3000000],
+
+                    //  [{lat: 20.0200, lng: 110.3486}, 120000000],
+                    
+                    ];
+        var map = new google.maps.Map(document.getElementById('mapm2'), {
+          zoom: 4,
+          center: uluru[1][0]
+        });
+        const placeTitle = document.createElement('div');
+        placeTitle.className = 'price-tag';
+        placeTitle.textContent = '$2.5M';
+        var marker = "";
+
+        for(var i=0;i<2;i++){
+          marker = new google.maps.Marker({
+            position: uluru[i][0],
+            animation: google.maps.Animation.DROP,
+            map: map
+          });
+          if (i<11){
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+          }
+          else if(i == 11){
+            marker.setIcon(pinSymbol("#FFF"));
+          }
+          else if(i == 12){
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+          }
+          else if(i == 13 || i == 14){
+
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+            marker.placeTitle('testing')
+          }
+        }
+
+        for (i=0;i<11;i++) {
+          var circle = new google.maps.Circle({
+            strokeColor: '#64967d',
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            fillColor: '#b0ecf4',
+            fillOpacity: 0.35,
+            map: map,
+            center: uluru[i][0],
+            radius: Math.sqrt(uluru[i][1]) * 50
+          });
+        }
+      }
+
+function initMapw() {
+        
+        var uluru = [[{lat: 30.2839, lng: 57.0834}, 10000000],
+                     [{lat: 34.3277, lng: 47.0778}, 3000000],
+                     [{lat: 34.7983, lng: 48.5148}, 10000000],
+                     [{lat: 33.5818, lng: 48.3988}, 3000000],
+                     [{lat: 30.7246, lng: 50.8456}, 10000000],
+                     [{lat: 35.1020, lng: 59.1042}, 3000000],
+                     [{lat: 32.1461, lng: 50.5136}, 10000000],
+                     [{lat: 38.4281, lng: 45.9071}, 3000000],
+                     [{lat: 37.7595, lng: 45.0000}, 3000000],
+                     [{lat: 34.6962, lng: 49.6911}, 3000000]
+
+                    //  [{lat: 20.0200, lng: 110.3486}, 120000000],
+                    
+                   
+                    ];
+        var map = new google.maps.Map(document.getElementById('mapw'), {
+          zoom: 4,
+          center: uluru[2][0]
+        });
+        const placeTitle = document.createElement('div');
+        placeTitle.className = 'price-tag';
+        placeTitle.textContent = '$2.5M';
+        var marker = "";
+
+        for(var i=0;i<10;i++){
+          marker = new google.maps.Marker({
+            position: uluru[i][0],
+            animation: google.maps.Animation.DROP,
+            map: map
+          });
+          if (i<11){
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+          }
+          else if(i == 11){
+            marker.setIcon(pinSymbol("#FFF"));
+          }
+          else if(i == 12){
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+          }
+          else if(i == 13 || i == 14){
+
+            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+            marker.placeTitle('testing')
+          }
+        }
+
+        for (i=0;i<11;i++) {
+          var circle = new google.maps.Circle({
+            strokeColor: '#64967d',
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            fillColor: '#b0ecf4',
+            fillOpacity: 0.35,
+            map: map,
+            center: uluru[i][0],
+            radius: Math.sqrt(uluru[i][1]) * 50
+          });
+        }
+      }
+
+window.onload = function(){
+    document.getElementById("man").style.display = "none";
+      document.getElementById("wal").style.display = "none";
+}
+    </script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpE3vP1M7tA7uXQ96FOQaakLj6gomE1SU&callback=initMapb">
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpE3vP1M7tA7uXQ96FOQaakLj6gomE1SU&callback=initMapb2">
+    </script>
+
+        <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpE3vP1M7tA7uXQ96FOQaakLj6gomE1SU&callback=initMapm1">
+    </script>
+
+       <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpE3vP1M7tA7uXQ96FOQaakLj6gomE1SU&callback=initMapm2">
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpE3vP1M7tA7uXQ96FOQaakLj6gomE1SU&callback=initMapw">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

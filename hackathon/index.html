@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Tech Tribe</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="index.css">
+
+
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+
+    <header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow" style="background-color: #443a28">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Food Security & Data Sensors</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3">Connected</a> -->
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3">Macroeconomic Researcher Food Security Time Series
+            Dashboard</a>
+
+        <div class="nav-item dropdown">
+            <button class="btn btn-secondary dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
+                aria-expanded="false">Country</button>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+                <li><a class="dropdown-item" id="usa">USA</a></li>
+                <li><a class="dropdown-item" id="india">India</a></li>
+                <li><a class="dropdown-item" id="china">China</a></li>
+            </ul>
+        </div>
+        <div>
+        </div>
+
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" id="import" href="index.html" style="font-size: large;">
+                                <span data-feather="file-text"></span>
+                                Time Series Dashboard
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column">
+                        <li class="mb-1">
+                            <button class="btn btn-toggle align-items-center rounded collapsed"
+                                data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true"
+                                onclick="changeDashboard(event, 'dashboard')"
+                                draggable="false">
+                                Macroeconomic(USD)
+                            </button>
+                            <div class="collapse show" id="home-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#" class="link-dark rounded" id="gdp" draggable="true"
+                                            ondragstart="drag(event)">GDP(USD)</a></li>
+                                    <li><a href="#" class="link-dark rounded" id="fdi_in" draggable="true"
+                                            ondragstart="drag(event)">FDI Inflow(USD)</a></li>
+                                    <li><a href="#" class="link-dark rounded" id="fdi_out" draggable="true"
+                                            ondragstart="drag(event)">FDI Outflows(USD)</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle align-items-center rounded collapsed"
+                                data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true" onclick="changeDashboard(event, 'dashboard')">
+                                Agriculture
+                            </button>
+                            <div class="collapse show" id="home-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#" class="link-dark rounded" id="agri_gdp" draggable="true"
+                                            ondragstart="drag(event)">Contribution of Agri(%GDP)</a></li>
+                                    <li><a href="#" class="link-dark rounded" id="credit" draggable="true"
+                                            ondragstart="drag(event)">Credit</a></li>
+                                    <li><a href="#" class="link-dark rounded" id="fert" draggable="true"
+                                            ondragstart="drag(event)">Fertilizers</a></li>
+                                    <li><a href="#" class="link-dark rounded" id="fert_prod" draggable="true"
+                                            ondragstart="drag(event)">Fertilizers PROD</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="mb-1">
+                            <button class="btn btn-toggle align-items-center rounded collapsed"
+                                data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true" onclick="changeDashboard(event, 'dashboard')">
+                                Debt Services
+                            </button>
+                            <div class="collapse show" id="home-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li><a href="#" class="link-dark rounded" id="reserves" draggable="true"
+                                            ondragstart="drag(event)">Reserves</a></li>
+                                    <li><a href="#" class="link-dark rounded" id="gni" draggable="true"
+                                            ondragstart="drag(event)">GNI</a></li>
+                                    <li><a href="#" class="link-dark rounded" id="total_debt" draggable="true"
+                                            ondragstart="drag(event)">Total Debt(%)</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" id="crops" href="crops.html" style="font-size: large;">
+                                <span data-feather="file-text"></span>
+                                Crops
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="import" href="importexport.html" style="font-size: large;">
+                                <span data-feather="file-text"></span>
+                                Imports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="import" href="sensors.html" style="font-size: large;">
+                                <span data-feather="file-text"></span>
+                                Sensors
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="wrapper">
+                <div class="values">
+                    <span id="range1">
+                        1990
+                    </span>
+                    <span> &dash; </span>
+                    <span id="range2">
+                        2020
+                    </span>
+                </div>
+                <div class="container2">
+                    <div class="slider-track"></div>
+                    <input type="range" min="1990" max="2020" value="1990" id="slider-1" oninput="slideOne()">
+                    <input type="range" min="1990" max="2020" value="2020" id="slider-2" oninput="slideTwo()">
+                </div>
+               
+                <button type="button" class="btn btn-primary" style="float:right;">Annotation</button></div>
+            </div>
+                <div id="draggable_playground">
+                <div class="dragdroparea">
+                    <table class="contactSummary">
+                        <tr>
+                            <td class="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        </tr>
+                        <tr>
+                            <td class="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                           
+                        </tr>
+                        <tr>
+                            <td class="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                          
+                        </tr>
+                        <tr>
+                            <td class="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                           
+                        </tr>
+                        <tr>
+                            <td class="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                           
+                        </tr>
+                        <tr>
+                            <td class="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                           
+                        </tr>
+                    </table>
+                </div>
+               
+
+
+                </div>
+                <div id="predict" style="display:none;margin-top:100px;margin-bottom:2500px;">
+                    
+                    
+                    <div class="container">
+                        <div class="row">
+                            <h4>Model Prediction</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2"> 
+                                <p class="label">Projected GDP</p> 
+                            </div>
+                            <div class="col-md-3">
+                                <progress class="bar" id="bar" value="24" max="100"></progress>
+                            </div>
+                            <div class="col-md-2">
+                                FDI-NetOutflows (% of GDP) 
+                            </div>
+                            <div class="col-md-3">
+                                <progress class="bar" id="bar" value="36" max="100"></progress>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                Current Account Balance (% of GDP) 
+                            </div>
+                            <div class="col-md-3">
+                                <progress class="bar" id="bar" value="24" max="100"></progress>
+                            </div>
+                            <div class="col-md-2">
+                                Agricultural Contribution (% of GDP) 
+                            </div>
+                            <div class="col-md-3">
+                                <progress class="bar" id="bar" value="24" max="100"></progress>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                Foreign direct investment, net inflows (% of GDP)
+                            </div>
+                            <div class="col-md-3">
+                                <progress class="bar" id="bar" value="24" max="100"></progress>
+                            </div>
+                            <div class="col-md-2">
+                                Manufacturing (% of GDP)
+                            </div>
+                            <div class="col-md-3">
+                                <progress class="bar" id="bar" value="24" max="100"></progress>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                Fertilizer consumption(% of fertilizer production)
+                            </div>
+                            <div class="col-md-3">
+                                <progress class="bar" id="bar" value="24" max="100"></progress>
+                            </div>
+                            <div class="col-md-2">
+                                Agriculture, forestry, and fishing, value added (annual % growth)
+                            </div>
+                            <div class="col-md-3">
+                                <progress class="bar" id="bar" value="24" max="100"></progress>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                Total reserves (% of total external debt)
+                            </div>
+                            <div class="col-md-3">
+                                <progress class="bar" id="bar" value="24" max="100"></progress>
+                            </div>
+                            <div class="col-md-2">
+                                Total debt service (% of GNI)
+                            </div>
+                            <div class="col-md-3">
+                                <progress class="bar" id="bar" value="24" max="100"></progress>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2"></div>
+                            <button class="btn btn-primary col-md-2">Call Machine Learning Model</button>
+                        </div>
+                    </div>
+                </div>
+                    <!--<div id="MACROECONOMICS_USA_GDP_div" style="width: 600px; height: 400px;" draggable="true" ondragstart="drag(event)" ></div>
+                    <div id="MACROECONOMICS_CHINA_GDP_div" style="width: 600px; height: 400px;" draggable="true" ondragstart="drag(event)" ></div>-->
+                
+
+<div class="alldiag" style="display:none;">
+                <!--Macroeconomics-->
+                <!--GDP growth (annual %) - United States-->
+                <iframe id="iframe_div1_1"
+                    src="https://data.worldbank.org/share/widget?contextual=default&end=2020&indicators=NY.GDP.MKTP.KD.ZG&locations=US&start=1990&view=chart"
+                    width='800' height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--GDP growth (annual %) - India-->
+                <iframe id="iframe_div1_2"
+                    src="https://data.worldbank.org/share/widget?end=2020&indicators=NY.GDP.MKTP.KD.ZG&locations=IN&start=1990&view=chart"
+                    width='800' height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--GDP growth (annual %) - China-->
+                <iframe id="iframe_div1_3"
+                    src="https://data.worldbank.org/share/widget?end=2020&indicators=NY.GDP.MKTP.KD.ZG&locations=CN&start=1990&view=chart"
+                    width='800' height='533' frameBorder='0' scrolling="no"></iframe>
+
+
+
+                <!--Foreign direct investment, net inflows (% of GDP) - United States-->
+                <iframe id="iframe_div2_1"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=BX.KLT.DINV.WD.GD.ZS&locations=US"
+                    width='800' height='533' frameBorder='0' scrolling="no"></iframe>
+
+                    
+
+                <!--Foreign direct investment, net inflows (% of GDP) - India-->
+                <iframe id="iframe_div2_2"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=BX.KLT.DINV.WD.GD.ZS&locations=IN"
+                    width='800' height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Foreign direct investment, net inflows (% of GDP) - China-->
+                <iframe id="iframe_div2_3"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=BX.KLT.DINV.WD.GD.ZS&locations=CN"
+                    width='800' height='533' frameBorder='0' scrolling="no"></iframe>
+
+
+
+                <!--Foreign direct investment, net outflows (% of GDP) - United States-->
+                <iframe id="iframe_div3_1"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=BM.KLT.DINV.WD.GD.ZS&locations=US"
+                    width='800' height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Foreign direct investment, net outflows (% of GDP) - India-->
+                <iframe id="iframe_div3_2"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=BM.KLT.DINV.WD.GD.ZS&locations=IN"
+                    width='800' height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Foreign direct investment, net outflows (% of GDP) - China-->
+                <iframe id="iframe_div3_3"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=BM.KLT.DINV.WD.GD.ZS&locations=CN"
+                    width='800' height='533' frameBorder='0' scrolling="no"></iframe>
+
+
+
+                <!--Agricultural-->
+                <!--Agriculture, forestry, and fishing, value added (% of GDP) - United States-->
+                <iframe id="iframe_div4_1"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=NV.AGR.TOTL.ZS&locations=US" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Agriculture, forestry, and fishing, value added (% of GDP) - India-->
+                <iframe id="iframe_div4_2"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=NV.AGR.TOTL.ZS&locations=IN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Agriculture, forestry, and fishing, value added (% of GDP) - China-->
+                <iframe id="iframe_div4_3"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=NV.AGR.TOTL.ZS&locations=CN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+
+
+                <!--Manufacturing, value added (% of GDP) - United States-->
+                <iframe id="iframe_div5_1"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=NV.IND.MANF.ZS&locations=US" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Manufacturing, value added (% of GDP) - India-->
+                <iframe id="iframe_div5_2"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=NV.IND.MANF.ZS&locations=IN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Manufacturing, value added (% of GDP) - China-->
+                <iframe id="iframe_div5_3"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=NV.IND.MANF.ZS&locations=CN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+
+
+                <!--Fertilizer consumption (kilograms per hectare of arable land) - United States-->
+                <iframe id="iframe_div6_1"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=AG.CON.FERT.ZS&locations=US" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Fertilizer consumption (kilograms per hectare of arable land) - India-->
+                <iframe id="iframe_div6_2"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=AG.CON.FERT.ZS&locations=IN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Fertilizer consumption (kilograms per hectare of arable land) - China-->
+                <iframe id="iframe_div6_3"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=AG.CON.FERT.ZS&locations=CN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+
+
+                <!--Fertilizer consumption (% of fertilizer production) - United States-->
+                <iframe id="iframe_div7_1"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=AG.CON.FERT.PT.ZS&locations=US" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Fertilizer consumption (% of fertilizer production) - India-->
+                <iframe id="iframe_div7_2"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=AG.CON.FERT.PT.ZS&locations=IN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Fertilizer consumption (% of fertilizer production) - China-->
+                <iframe id="iframe_div7_3"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=AG.CON.FERT.PT.ZS&locations=CN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+
+
+                <!--Debt-->
+                <!--Total reserves (includes gold, current US$) - United States-->
+                <iframe id="iframe_div8_1"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=FI.RES.TOTL.CD&locations=US" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Total reserves (includes gold, current US$) - India-->
+                <iframe id="iframe_div8_2"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=FI.RES.TOTL.CD&locations=IN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Total reserves (includes gold, current US$) - China-->
+                <iframe id="iframe_div8_3"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=FI.RES.TOTL.CD&locations=CN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+
+
+                <!--GNI (current US$) - United States-->
+                <iframe id="iframe_div9_1"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=NY.GNP.MKTP.CD&locations=US" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--GNI (current US$) - India-->
+                <iframe id="iframe_div9_2"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=NY.GNP.MKTP.CD&locations=IN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--GNI (current US$) - China-->
+                <iframe id="iframe_div9_3"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=NY.GNP.MKTP.CD&locations=CN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+
+
+                <!--Total debt service (% of GNI) - Low & middle income-->
+                <iframe id="iframe_div10_1"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=DT.TDS.DECT.GN.ZS&locations=US" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Total debt service (% of GNI) - India-->
+                <iframe id="iframe_div10_2"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=DT.TDS.DECT.GN.ZS&locations=IN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+                <!--Total debt service (% of GNI) - China-->
+                <iframe id="iframe_div10_3"
+                    src="https://data.worldbank.org/share/widget?start=1990&end=2020&indicators=DT.TDS.DECT.GN.ZS&locations=CN" width='800'
+                    height='533' frameBorder='0' scrolling="no"></iframe>
+
+
+
+    
+
+</div>
+            </main>
+        </div>
+    </div>
+   
+
+    <script>
+        // Check if connected or local
+
+        // add eventlistener to dropdown
+        document.getElementById('china').addEventListener('click', () => {
+            console.log("Selected China!");
+            document.getElementById('dropdown01').innerHTML = "China";
+        });
+        document.getElementById('usa').addEventListener('click', () => {
+            console.log("Selected USA!");
+            document.getElementById('dropdown01').innerHTML = "USA";
+        });
+        document.getElementById('india').addEventListener('click', () => {
+            console.log("Selected India!");
+            document.getElementById('dropdown01').innerHTML = "India";
+        });
+
+
+
+        // drag and drop
+        var cloneId;
+        var cnt = 0;
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            cloneId = ev.target.id;
+            // ev.target.classList.add("dragged")
+            // ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            console.log(cloneId.split("_")[0]);
+
+            // var data = ev.dataTransfer.getData("text");
+            //let newElem = document.getElementById('MACROECONOMICS_USA_GDP_div').cloneNode(false);
+            let newElem;
+
+            if (cloneId === "gdp") {
+                newElem = document.getElementById('iframe_div1_1').cloneNode(false);
+            } else if (cloneId === "fdi_in") {
+                newElem = document.getElementById('iframe_div2_1').cloneNode(false);
+            } else if (cloneId === "fdi_out") {
+                newElem = document.getElementById('iframe_div3_1').cloneNode(false);
+            } else if (cloneId === "agri_gdp") {
+                newElem = document.getElementById('iframe_div4_1').cloneNode(false);
+            } else if (cloneId === "credit") {
+                newElem = document.getElementById('iframe_div5_1').cloneNode(false);
+            } else if (cloneId === "fert") {
+                newElem = document.getElementById('iframe_div6_1').cloneNode(false);
+            } else if (cloneId === "fert_prod") {
+                newElem = document.getElementById('iframe_div7_1').cloneNode(false);
+            } else if (cloneId === "reserves") {
+                newElem = document.getElementById('iframe_div8_1').cloneNode(false);
+            } else if (cloneId === "gni") {
+                newElem = document.getElementById('iframe_div9_1').cloneNode(false);
+            } else if (cloneId === "total_debt") {
+                newElem = document.getElementById('iframe_div10_1').cloneNode(false);
+            } else if (cloneId === "EG_Imports_Sankey") {
+                newElem = document.getElementById('EG_Wheat_Chart').cloneNode(false);
+            } else if (cloneId === "EG_Imports_Pie") {
+                newElem = document.getElementById('EG_Wheat_Pie_Chart').cloneNode(false);
+            } else if (cloneId === "SA_Imports_Sankey") {
+                newElem = document.getElementById('SA_Wheat_Chart').cloneNode(false);
+            } else if (cloneId === "SA_Imports_Pie") {
+                newElem = document.getElementById('SA_Wheat_Pie_Chart').cloneNode(false);
+            } else {
+
+            }
+
+            // if (cloneId.split("_")[0] === 'cloned') {
+            //     newElem = document.getElementById(cloneId);
+            // } else {
+            //     cnt += 1;
+            //     if (cloneId === 'gdp') {
+            //         newElem = document.getElementById('iframe_div').cloneNode(false)
+            //     } else {
+            //         newElem = document.getElementById(cloneId).cloneNode(false);
+            //     }
+            //     newElem.id = "cloned_" + cnt;
+            //     console.log(newElem);
+            // }
+
+            ev.target.appendChild(newElem);
+
+            //MACROECONOMICS_USA_GDP();
+
+            //MACROECONOMICS_CHINA_GDP();
+        }
+
+        function changeDashboard(e, page) {
+            e.preventDefault();
+            console.log('clicked', page);
+            if (page === 'predict') {
+                document.getElementById('predict').style.display = "block";
+                document.getElementById('draggable_playground').style.display = "none";
+            } else {
+                document.getElementById('predict').style.display = "none";
+                document.getElementById('draggable_playground').style.display = "block";
+            }
+        }
+    </script>
+<script type="text/javascript">
+    window.onload = function(){
+slideOne();
+slideTwo();
+}
+let sliderOne = document.getElementById("slider-1");
+let sliderTwo = document.getElementById("slider-2");
+let displayValOne = document.getElementById("range1");
+let displayValTwo = document.getElementById("range2");
+let minGap = 10;
+let sliderTrack = document.querySelector(".slider-track");
+let sliderMaxValue = document.getElementById("slider-1").max;
+function slideOne(){
+if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap){
+sliderOne.value = parseInt(sliderTwo.value) - minGap;
+}
+displayValOne.textContent = sliderOne.value;
+fillColor();
+}
+function slideTwo(){
+if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap){
+sliderTwo.value = parseInt(sliderOne.value) + minGap;
+}
+displayValTwo.textContent = sliderTwo.value;
+fillColor();
+}
+function fillColor(){
+percent1 = (sliderOne.value) * 10;
+percent2 = (sliderMaxValue - sliderTwo.value) * 10;
+// percent3 = (sliderMaxValue - sliderTwo.value) * 10;
+sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3264fe ${percent2}% , #3264fe ${percent2}%, #dadae5 ${percent2}%)`;
+}
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
