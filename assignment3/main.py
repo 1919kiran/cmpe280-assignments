@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
 
@@ -20,17 +20,20 @@ def reports():
     patient_records = []
     for document in cursor:
         patient = dict()
-        patient["name"] = document["demographics-firstName"] + " " + document["demographics-lastName"]
-        patient["age"] = document["demographics-age"]
-        patient["gender"] = document["demographics-gender"]
-        patient["photo"] = document["demographics-webcam-capture"]
-        patient["height"] = document["vitals-height"]
-        patient["weight"] = document["vitals-weight"]
-        patient["temperature"] = document["vitals-temperature"]
-        patient["bp"] = document["vitals-bp"]
-        patient["medications"] = document["vitals-medications"]
-        patient["notes"] = document["vitals-notes"]
-        patient["file"] = document["vitals-file"]
+        try:
+            patient["name"] = document["demographics-firstName"] + " " + document["demographics-lastName"]
+            patient["age"] = document["demographics-age"]
+            patient["gender"] = document["demographics-gender"]
+            patient["photo"] = document["demographics-webcam-capture"]
+            patient["height"] = document["vitals-height"]
+            patient["weight"] = document["vitals-weight"]
+            patient["temperature"] = document["vitals-temperature"]
+            patient["bp"] = document["vitals-bp"]
+            patient["medications"] = document["vitals-medications"]
+            patient["notes"] = document["vitals-notes"]
+            patient["file"] = document["vitals-file"]
+        except Exception as e:
+            print("An error occurred: ", e)
         patient_records.append(patient)
     return render_template("reports.html", patient_records=patient_records)
 
@@ -46,7 +49,10 @@ def upload_details():
     result = collection.insert_one(data)
     print(result.inserted_id)
 
-    return "OK"
+    return jsonify({
+        "message": "success",
+        "user_id": result.inserted_id
+    })
 
 
 if __name__ == "__main__":

@@ -27,6 +27,7 @@
                     </ul>
                 </div>
             </nav>
+            <br><br>
             <div class="table-container">
                 <table class="table table-hover">
                     <thead>
@@ -77,9 +78,27 @@
                             <td style="word-wrap: break-word">{{ patient["bp"] }}</td>
                             <td style="word-wrap: break-word">{{ patient["medications"] }}</td>
                             <td style="word-wrap: break-word">{{ patient["notes"] }}</td>
-                            <td>
-                                <button type="button" class="btn btn-primary" id="downloadBtn" value="{{ patient['file'] }}">Download File</button>
-                            </td>
+                            <td style="word-wrap: break-word">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#photoModal" value="{{patient['file']}}">View Vaccination Image</button>
+                                <div class="modal fade" id="fileModal" tabindex="-1" role="dialog" aria-labelledby="fileModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="fileModalLabel">Vaccination Proof of {{ patient["name"] }}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img id="fileImage" class="img-fluid">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </td>
 
                         </tr>
                         {% endfor %}

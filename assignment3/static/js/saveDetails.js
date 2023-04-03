@@ -1,6 +1,8 @@
 const demographicsForm = document.getElementById("demographics");
 const vitalsForm = document.getElementById("vitals");
 const submitBtn = document.getElementById("doc-submit");
+const demoButton = document.getElementById("demo-submit");
+const vitalsButton = document.getElementById("vitals-submit");
 
 // Add submit event listener to the demographics form
 if(demographicsForm){
@@ -15,6 +17,8 @@ if(demographicsForm){
         for (const [key, value] of formData.entries()) {
             localStorage.setItem(`demographics-${key}`, value);
         }
+        const href = demoButton.getAttribute('href');
+        window.location.href = href;
     });
 }
 
@@ -43,6 +47,8 @@ if(vitalsForm){
         for (const [key, value] of formData.entries()) {
             localStorage.setItem(`vitals-${key}`, value);
         }
+        const href = vitalsButton.getAttribute('href');
+        window.location.href = href;
     });
 }
 
@@ -83,4 +89,8 @@ if(submitBtn){
             }
         });
     });
+}
+
+function redirectTo(url) {
+    window.location.href = url;
 }
