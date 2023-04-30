@@ -53,12 +53,12 @@ def get_response_from_model(message):
 def create_qa_chain():
     load_knowledge_db()
     global qa_chain
-    qa_chain = load_qa_chain(OpenAI(), chain_type="stuff")
+    qa_chain = load_qa_chain(OpenAI(model_name="gpt-3.5-turbo"), chain_type="stuff")
 
 
 def create_knowledge_db():
     reader = PdfReader("dataset/handbook_min.pdf")
-    raw_text = ''
+    raw_text = ""
     for i, page in enumerate(reader.pages):
         text = page.extract_text()
         if text:
