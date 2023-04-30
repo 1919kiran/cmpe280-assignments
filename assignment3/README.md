@@ -2,8 +2,9 @@ Please update "Health Camp Single Page App (SPA)" from storing to local storage 
 
 You can use any one of the following Web containers:
 
-Tomcat
-IIS Server
-Flask
-Node JS
+- Tomcat
+- IIS Server
+- Flask
+- Node JS
+
 As a database, plese use MY SQL. 
