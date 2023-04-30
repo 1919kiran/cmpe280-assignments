@@ -51,7 +51,6 @@ def get_response_from_model(message):
 
 
 def create_qa_chain():
-    load_knowledge_db()
     global qa_chain
     qa_chain = load_qa_chain(OpenAI(model_name="gpt-3.5-turbo"), chain_type="stuff")
 
