@@ -4,11 +4,12 @@ Since, S-EHR conducts health camps in remote parts of the world, one of the issu
 
 Use: HTML Browser storage - SQL 
 
+
 SPA - 1:
-<img width="1051" alt="SPA-1-1-1" src="https://user-images.githubusercontent.com/18122083/235375403-556288ba-83fe-4009-a954-7ea9e0683766.png"/>
+![SPA-1](https://user-images.githubusercontent.com/18122083/235375403-556288ba-83fe-4009-a954-7ea9e0683766.png)
 
 SPA - 2:
-<img width="875" alt="SPA-2" src="https://user-images.githubusercontent.com/18122083/235375404-720929b9-2d05-4036-8b17-282494e5e62a.png"/>
+![SPA-2](https://user-images.githubusercontent.com/18122083/235375404-720929b9-2d05-4036-8b17-282494e5e62a.png)
 
 SPA - 3:
-<img width="858" alt="SPA-3" src="https://user-images.githubusercontent.com/18122083/235375407-0a26711f-c7d3-46d3-a312-85852dedbb4a.png"/>
+![SPA-3](https://user-images.githubusercontent.com/18122083/235375407-0a26711f-c7d3-46d3-a312-85852dedbb4a.png)
