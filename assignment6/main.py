@@ -12,7 +12,7 @@ from langchain.vectorstores import FAISS
 
 app = Flask(__name__, static_url_path="/static", static_folder="static/")
 CORS(app, resources={r"*": {"origins": "*"}})
-os.environ["OPENAI_API_KEY"] = ""
+os.environ["OPENAI_API_KEY"] = "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"
 qa_chain = None
 knowledge_db = None
 
